@@ -40,11 +40,9 @@ async function run() {
     // to the video element
     
     
-    navigator.getUserMedia(
-        { video: {} },
-        stream => videoEl.srcObject = stream,
-        err => console.error(err)
-    )
+    navigator.mediaDevices.getUserMedia({video: {}})
+        .then(stream => videoEl.srcObject = stream)
+        .catch(err => console.error(err))
     hideOverlay();
 
 }
